@@ -1,0 +1,28 @@
+<% @articles.order(created_at: :desc).each do |article| %>
+  <section class="article-small">
+
+    <% if (article.image != "") and (article.image != nil) %>
+      <%= image_tag article.image, class: "img-responsive img-style"%>
+    <% end %>
+
+    <h1 class="article-title"><%= article.title %></h1>
+
+    <% 
+      if (article.created_at == article.updated_at)
+        custom_msg = "Posted"
+        time_stamp = article.created_at
+      else
+        custom_msg = "Edited"
+        time_stamp = article.updated_at
+      end 
+    %>
+
+    <h4 class="article-details"><%= custom_msg %> by <%= article.author %> on <%= time_stamp.strftime("%B %e, %Y at %l:%M %p (%Z %:z)") %></h4>
+    
+    <p class="article-abstract justified"><%= article.abstract %></p>
+
+    <div class="article-footer">
+      <%= link_to 'Read More', article, class: "btn btn-primary btn-lg" %>
+    </div>
+  </section>
+<% end %>

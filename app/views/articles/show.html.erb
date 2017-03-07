@@ -1,0 +1,32 @@
+<% if notice != nil %>
+  <br>
+  <div class="alert alert-success" role="alert"><%= notice %></div>
+<% end %>
+
+<header class="site-header">
+  <h1 class="site-name custom-line-hgt"><%= @article.title %></h1>
+  <h2 class="site-author">by <%= @article.author %></h2>
+  <p class="site-description desc-top-margin">
+    Posted on <%= @article.created_at.strftime("%B %e, %Y at %l:%M %p (%Z %:z)") %>
+    <% if (@article.created_at != @article.updated_at) %>
+      <br>Last Updated on <%= @article.updated_at.strftime("%B %e, %Y at %l:%M %p (%Z %:z)") %>
+    <% end %>
+  </p>
+</header> <!-- end site-header -->
+
+<section class="article-big">
+  <% if (@article.image != "") and (@article.image != nil) %>
+    <%= image_tag @article.image, class: "img-responsive img-style"%>
+  <% end %>
+
+  <div class="article-text">
+    <%= render html: @article.text.html_safe %>
+  </div>
+  <div class="article-footer">
+    <div class="btn-group" role="group">
+      <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-success article-button" %>
+      <%= link_to 'Delete', @article, class: "btn btn-success article-button", method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Back', root_path, class: "btn btn-success article-button" %>
+    </div>
+  </div>
+</section>

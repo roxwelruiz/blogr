@@ -1,0 +1,40 @@
+<% if notice != nil %>
+  <br>
+  <div class="alert alert-success" role="alert"><%= notice %></div>
+<% end %>
+
+<header class="site-header">
+  <h1 class="site-name">The Rocket Blog</h1>
+  <p class="site-description">A blog for... just about everything that comes to mind!</p>
+</header> <!-- end site-header -->
+
+<div class="row">
+  <div class="col-md-9">
+    <%= render 'shared/article' %>
+  </div> <!-- end articles' column -->
+
+  <div class="col-md-3 hidden-print hidden-xs hidden-sm">
+    <aside id="side-affix">
+      <section class="sidebox">
+        <h2 class="featured-section-title">Today's Featured Article</h2>
+        <h4 class="featured-title"><%= @featured.title %></h4>
+        <p class="featured-abstract justified"><%= @featured.abstract %></p>
+        <div class="sidebox-footer">
+          <%= link_to 'Read More', @featured, class: "btn btn-primary" %>
+        </div>
+      </section>
+
+      <section class="sidebox">
+        <h3 class="featured-section-title">A Few Options...</h3>
+        <div class="sidebox-footer">
+          <div class="btn-group-vertical" role="group">
+            <%= link_to 'New Article', new_article_path, class: "btn btn-success" %>
+            <%= link_to "Back To Top", '#', class: "btn btn-success" %>
+          </div>
+        </div>
+      </section>
+    </aside>
+  </div> <!-- end sidebar -->
+</div> <!-- end row -->
+
+<br>

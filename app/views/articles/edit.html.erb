@@ -1,0 +1,14 @@
+<header class="site-header">
+  <h1 class="site-name">Edit Article</h1>
+</header> <!-- end site-header -->
+
+<section class="form-custom-margin form-text">
+	<%= render 'form', article: @article %>
+
+	<div class="edit-footer">
+		<div class="btn-group" role="group">
+	  	<%= link_to 'Show', @article, class: "btn btn-success article-button" %>
+	  	<%= link_to 'Back', root_path, class: "btn btn-success article-button" %>
+	  </div>
+	</div>
+</section>

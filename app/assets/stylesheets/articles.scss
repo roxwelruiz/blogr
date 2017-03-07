@@ -1,0 +1,294 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*************/
+/* variables */
+/*************/
+
+$header-footer-height: 50px;
+$grey-border: #e7e7e7;
+$grey-font: #777;
+$grey-background: #f8f8f8;
+
+/***********/
+/* general */
+/***********/
+
+html {
+  position: relative;
+  min-height: 100%;	
+}
+
+/* adjust the body to accommodate the navbar and the footer */
+body {
+	margin-bottom: $header-footer-height;
+	padding-top: $header-footer-height;
+}
+
+/* set the position at which the sidebar starts to move down */
+.affix { top: $header-footer-height; }
+
+/* style the main header section */
+.site-header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid $grey-border;
+
+  .site-name {
+  	margin-top: 25px;
+    margin-bottom: 0;
+
+    font-size: 5em;
+  }
+
+  .custom-line-hgt {
+  	line-height: 1.0;
+  }
+
+  .site-author {
+  	margin-top: 0;
+  	margin-bottom: 30px;
+
+  	color: #777;
+  	font-size: 2.75em;
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .site-description {
+		color: #999;
+		line-height: 1.25;
+		font-size: 1.75em;
+    font-weight: 300;
+  }
+
+  .desc-top-margin {
+    margin-top: 10px;
+  }
+}
+
+/* style the images */
+.img-style { 
+	margin: 0 auto; 
+
+	max-height: 455px;
+}
+
+/* justifies text */
+.justified { text-align: justify; }
+
+/* set a fixed width to all buttons */
+.btn { width: 130px; }
+
+/* create a top margin gap of 30 pixels */
+.top-margin { margin-top: 30px; }
+
+/******************/
+/* navigation bar */
+/******************/
+
+/* change the hover style on the nav buttons */
+.navbar-default {
+	.navbar-nav {
+		> li {
+			> a:hover {
+				color: white;
+				background-color: #5cb85c;;
+			}
+		}
+	}
+}
+
+/* overwriting some of bootstrap's values */
+.navbar-right { margin-right: 0; }
+
+/*******************/
+/* index/home page */
+/*******************/
+
+@media (min-width: 992px) {
+	.sidebox { width: 212.5px; }
+}
+
+@media (min-width: 1200px) {
+	.sidebox { width: 262.5px; }
+}
+
+/* style for the small article boxes in the home/index page */
+.article-small {
+	margin-top: 20px;
+	padding: 20px;
+
+	border: 1px solid $grey-border;
+
+	.article-title {
+		margin-top: 30px;
+		margin-bottom: 10px;
+
+		font-size: 3em;
+	}
+
+	.article-details { 
+		margin-bottom: 30px;
+
+		color: #999;
+		font-weight: 300;
+	}
+
+	.article-abstract {
+		line-height: 1.2;
+		font-size: 1.75em;
+		font-weight: 300;
+	}
+
+	.article-footer {
+		margin-top: 20px;
+		text-align: center;
+	}
+}
+
+/* style for the side bar */
+aside {
+	section {
+		margin-top: 20px;
+		padding: 0px 15px 15px;
+
+		border: 1px solid $grey-border;
+	}
+
+	.featured-section-title {
+		padding-bottom: 10px;
+		border-bottom: 1px solid $grey-border;
+	}
+
+	.featured-title {
+		margin-top: 15px;
+
+		font-weight: 500;
+		font-size: 1.5em;
+	}
+
+	.featured-abstract {
+		line-height: 1.3;
+	}
+
+	h3 { text-align: center; }
+
+	.btn-group-vertical {
+		margin-top: 5px;
+		width: 130px;
+	}
+
+	.sidebox-footer {
+		text-align: center;
+	}
+}
+
+/*********************/
+/* about and contact */
+/*********************/
+
+.no-side-padding { padding: 0; }
+
+/* style for the about and contact texts in their respective pages */
+.about-text, .contact-text {
+	p {
+		margin-top: 30px;
+
+		line-height: 1.4;
+		font-size: 1.8em;
+		font-weight: 300;
+	}
+
+	.bold {	font-weight: 500; }
+}
+
+/* change the form labels a bit */
+.form-text {
+	label { 
+		font-size: 1.5em;
+		font-weight: 500;
+	}
+}
+
+.form-custom-margin { 
+	margin-top: 30px; 
+	margin-bottom: 20px;
+}
+
+/****************/
+/* show article */
+/****************/
+
+/* style for the main article */
+.article-big {
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+	.article-text { margin: 20px 0; }
+	
+	.article-footer { 
+		padding-top: 20px;
+
+		text-align: center;
+
+		border-top: 1px solid $grey-border;
+	}
+}
+
+/********************/
+/* edit/new article */
+/********************/
+
+/* style the div containing the bottom menu buttons */
+.edit-footer, .new-footer {
+		padding-top: 20px;
+
+		text-align: center;
+
+		border-top: 1px solid $grey-border;
+}
+
+/* center the forms' blue buttons */
+.btn-centered { text-align: center; }
+
+/* overwrite custom margin for form blue buttons */
+.actions {
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+/* textareas are not resizeable */
+.no-resize { resize: none; }
+
+/**************/
+/* footer bar */
+/**************/
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  height: $header-footer-height;
+  padding: 15px 0;
+  width: 100%;
+  
+  color: $grey-font;
+
+  background-color: $grey-background;
+	border-top: 1px solid $grey-border;
+
+	ul {
+		float: right;
+		list-style: none;
+
+		li {
+			float: left;
+			margin-left: 20px;
+		}
+	}
+}
