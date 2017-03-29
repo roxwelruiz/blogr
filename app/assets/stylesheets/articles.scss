@@ -7,6 +7,7 @@
 /*************/
 
 $header-footer-height: 50px;
+$aqua-color: #31b0d5;
 $grey-border: #e7e7e7;
 $grey-font: #777;
 $grey-background: #f8f8f8;
@@ -26,28 +27,34 @@ body {
 	padding-top: $header-footer-height;
 }
 
+a, a:focus, a:hover { color: $aqua-color; }
+
 /* set the position at which the sidebar starts to move down */
 .affix { top: $header-footer-height; }
 
 /* style the main header section */
-.site-header {
+.main-header {
   padding-top: 20px;
   padding-bottom: 20px;
 
   border-bottom: 1px solid $grey-border;
 
-  .site-name {
+  .main-name {
   	margin-top: 25px;
     margin-bottom: 0;
 
     font-size: 5em;
   }
 
+  .smaller {
+  	font-size: 3.5em;
+  }
+
   .custom-line-hgt {
   	line-height: 1.0;
   }
 
-  .site-author {
+  .main-author {
   	margin-top: 0;
   	margin-bottom: 30px;
 
@@ -57,7 +64,7 @@ body {
     line-height: 1;
   }
 
-  .site-description {
+  .main-description {
 		color: #999;
 		line-height: 1.25;
 		font-size: 1.75em;
@@ -80,10 +87,35 @@ body {
 .justified { text-align: justify; }
 
 /* set a fixed width to all buttons */
-.btn { width: 130px; }
+//.btn { width: 130px; }
 
 /* create a top margin gap of 30 pixels */
 .top-margin { margin-top: 30px; }
+
+/* change the width of the small container when width is greater than 768 pixels */
+@media (min-width: 768px) {
+	.small-container {
+		margin: 0 auto;
+		width: 737px;
+	}
+}
+
+/* used for login, sign-up, password reset, and other small forms */
+.mini-container {
+	margin: 0 auto;
+	max-width: 330px;
+}
+
+.center-content { text-align: center; }
+
+/*
+Firefox has some awkward fieldset styling involving width that interferes with the 
+responsive table. This cannot be overridden without a Firefox-specific hack that it is 
+not provided in Bootstrap.
+*/
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
 
 /******************/
 /* navigation bar */
@@ -95,14 +127,47 @@ body {
 		> li {
 			> a:hover {
 				color: white;
-				background-color: #5cb85c;;
+				background-color: $aqua-color;
+			}
+		}
+
+		> li.open {
+			> a, > a:hover, > a:focus {
+				color: white;
+				background-color: $aqua-color;
+			}
+		}
+
+		.dropdown-menu {
+			> li {
+				> a:hover, >a:focus {
+				color: white;
+				background-color: $aqua-color;				
+				}
 			}
 		}
 	}
 }
 
+
 /* overwriting some of bootstrap's values */
 .navbar-right { margin-right: 0; }
+
+/****************/
+/* sign_up page */
+/****************/
+
+.double-content {
+	margin-bottom: 5px;
+
+	.inline-label { display: inline; }
+
+	.custom-label {
+		margin-left: 5px;
+		
+		font-weight: normal;
+	}
+}
 
 /*******************/
 /* index/home page */
@@ -176,9 +241,10 @@ aside {
 
 	h3 { text-align: center; }
 
-	.btn-group-vertical {
-		margin-top: 5px;
-		width: 130px;
+	.options-list {
+		margin-bottom: 0;
+		padding: 0;
+		list-style-type: none;
 	}
 
 	.sidebox-footer {

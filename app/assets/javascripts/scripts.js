@@ -1,4 +1,4 @@
-$(document).ready(
+$(document).on('turbolinks:load',
   function() {
     $('#side-affix').affix({
       offset: { top: 185 }

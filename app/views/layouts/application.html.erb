@@ -35,23 +35,44 @@
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "about",     about_path %></li>
           <li><%= link_to "contact",   contact_path %></li>
-          <li><a href="#">login</a></li>
+          
+          <% if user_signed_in? %>
+            <li class="drowdrop">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">options <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'my profile', current_user %></li>
+                <li role="separator" class="divider"></li>
+                <li><%= link_to 'log out', destroy_user_session_path, :method => :delete %></li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to 'log in', new_user_session_path %></li>
+          <% end %>
+          
         </ul>
       </div> <!-- end regular navbar-nav --> 
     </div> <!-- end container for navbar -->
   </nav>
 
   <div class="container">
+    <% if notice != nil %>
+      <br>
+      <div class="alert alert-info" id="notice" role="alert"><%= notice %></div>
+    <% end %>
+    <% if alert != nil %>
+      <br>
+      <div class="alert alert-danger" id="notice" role="alert"><%= alert %></div>
+    <% end %>
+    
     <%= yield %>
-  </div>
+  </div> <!-- end container -->
   
   <footer class="footer">
     <div class="container">
-      <span>Blog template built with <a href="http://getbootstrap.com">Bootstrap</a></span>
+      <span>Built with <a href="http://getbootstrap.com">Bootstrap</a></span>
       <ul><li>&copy; RocketMan . 2017</li></ul>
     </div> <!-- end container -->
   </footer>
 
-  <%= javascript_include_tag 'scripts' %>
 </body>
 </html>

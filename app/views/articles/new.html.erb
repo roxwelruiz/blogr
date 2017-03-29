@@ -1,11 +1,11 @@
-<header class="site-header">
-  <h1 class="site-name">New Article</h1>
-</header> <!-- end site-header -->
+<header class="main-header">
+  <h1 class="main-name">New Article</h1>
+</header> <!-- end page-header -->
 
 <section class="form-custom-margin form-text">
 	<%= render 'form', article: @article %>
 
 	<div class="new-footer">
-	  <%= link_to 'Back', root_path, class: "btn btn-success article-button" %>
+	  <%= link_to 'Back', root_path %>
 	</div>
 </section>

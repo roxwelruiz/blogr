@@ -1,0 +1,25 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*
+Firefox has some awkward fieldset styling involving width that interferes with the 
+responsive table. This cannot be overridden without a Firefox-specific hack that it is 
+not provided in Bootstrap.
+*/
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
+
+/* apply these styles when the display is greater than or equal to 360 pixels */
+@media (min-width: 360px) {
+
+	/* Put the users title to the left... */
+	.left-title { float: left; }
+
+	/* ... and the 'New User' button to the right */
+	.new-user-btn { 
+		float: right;
+  	margin-top: 45px;
+ }
+}
