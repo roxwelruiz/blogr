@@ -1,16 +1,24 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  
+  # make sure the user is signed in before accessing
+  before_filter :authenticate_user!, :except => [ :index, :show ]
+  load_and_authorize_resource       # check the abilities of users
 
   # GET /articles
   # GET /articles.json
   def index
     @articles = Article.all
     @featured = Article.first
+
+    @articles = @articles.paginate(page: params[:page], per_page: 4)
   end
 
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @comments = @article.comments.order("created_at DESC")
+    @comments = @comments.paginate(page: params[:page], per_page: 4)
   end
 
   # GET /articles/new

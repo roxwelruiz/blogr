@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  # load_and_authorize_resource
-  before_filter :authenticate_user!
+  before_filter :authenticate_user! # make sure the user is signed in before accessing
+  load_and_authorize_resource       # check the abilities of users
 
   # GET /users
   # GET /users.json

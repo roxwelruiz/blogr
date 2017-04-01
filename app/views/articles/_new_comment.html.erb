@@ -1,0 +1,22 @@
+<% if signed_in? %>
+	<section>
+		<div class="page-header">
+		  <h2>Add a Comment</h2>
+		</div>
+
+		<%= form_for([@article, @article.comments.build]) do |f| %>
+			<div class="field form-group">
+				<%= f.label :title, "Comment Title" %>
+				<%= f.text_field "title", class: "form-control" %>
+			</div>
+			<div class="field form-group">
+				<%= f.label :body, "Comments" %>
+				<%= f.text_area :body, class: "form-control no-resize", rows: "6" %>
+			</div>
+
+		  <div class="center-content">
+		    <%= f.submit "Submit Comment", class: "btn btn-lg btn-info" %>
+		  </div>
+		<% end %>
+	</section>
+<% end %>

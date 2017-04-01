@@ -1,0 +1,35 @@
+<section>	
+	<div class="page-header">
+	  <h2>Users&apos; Comments</h2>
+	</div>
+
+	<% if @comments.count < 1 %>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				This article does not have any comments... yet!
+			</div>
+		</div>
+	<% else %>
+		<% @comments.each do |comment| %>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<%= comment.title %> <span class="comment-author"><em>posted by <%= comment.user.first_name %><%= " #{time_ago_in_words(comment.created_at)} ago" %></em></span>
+						<% if signed_in? && current_user.admin? %>
+							<span class="delete-comment-right">
+								<%= link_to ('<span class="glyphicon glyphicon-remove"></span>').html_safe, article_comment_path(comment.article, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+							</span>
+						<% end %>						
+					</h3>
+				</div>
+				<div class="panel-body">
+					<%= comment.body %>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+
+	<div class="center-content generic-container">
+		<%= will_paginate @comments %>
+	</div>
+</section>

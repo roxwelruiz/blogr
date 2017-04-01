@@ -41,6 +41,9 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">options <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><%= link_to 'my profile', current_user %></li>
+                <% if user_signed_in? && current_user.admin %>
+                  <li><%= link_to 'users\' list', users_path %></li>
+                <% end %>
                 <li role="separator" class="divider"></li>
                 <li><%= link_to 'log out', destroy_user_session_path, :method => :delete %></li>
               </ul>
@@ -55,15 +58,6 @@
   </nav>
 
   <div class="container">
-    <% if notice != nil %>
-      <br>
-      <div class="alert alert-info" id="notice" role="alert"><%= notice %></div>
-    <% end %>
-    <% if alert != nil %>
-      <br>
-      <div class="alert alert-danger" id="notice" role="alert"><%= alert %></div>
-    <% end %>
-    
     <%= yield %>
   </div> <!-- end container -->
   

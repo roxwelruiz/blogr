@@ -1,35 +1,42 @@
+<% if notice != nil %>
+  <div class="alert alert-info" role="alert"><%= notice %></div>
+<% end %>
+<% if alert != nil %>
+  <div class="alert alert-danger" role="alert"><%= alert %></div>
+<% end %>
+
 <header class="main-header">
   <h1 class="main-name">The Rocket Blog</h1>
   <p class="main-description">A blog for... just about everything that comes to mind!</p>
 </header> <!-- end main-header -->
 
-<div class="row">
+<div class="row margin-bottom-gap">
   <div class="col-md-9">
     <%= render @articles.order(created_at: :desc) %>
+
+    <div class="center-content generic-container">
+      <%= will_paginate @articles %>
+    </div>
   </div> <!-- end articles' column -->
 
   <div class="col-md-3 hidden-print hidden-xs hidden-sm">
     <aside id="side-affix">
       <section class="sidebox">
-        <h2 class="featured-section-title">Today's Featured Article</h2>
+        <h2 class="featured-section-title">Today&apos;s Featured Article</h2>
         <h4 class="featured-title"><%= @featured.title %></h4>
         <p class="featured-abstract justified"><%= @featured.abstract %></p>
-        <div class="sidebox-footer">
-          <%= link_to 'Read More', @featured, class: "btn btn-info btn-lg btn-block" %>
-        </div>
+        <%= link_to 'Read More', @featured, class: "btn btn-info btn-lg btn-block" %>
       </section>
 
-      <section class="sidebox">
+      <section class="sidebox center-content">
         <h3 class="featured-section-title">A Few Options...</h3>
-        <div class="sidebox-footer">
-          <ul class="options-list">
+        <ul class="options-list">
+          <% if user_signed_in? && current_user.admin %>
             <li><%= link_to 'New Article', new_article_path %></li>
-            <li><%= link_to "Back To Top", '#' %></li>
-          </ul>
-        </div>
+          <% end %>
+          <li><%= link_to "Back To Top", '#' %></li>
+        </ul>
       </section>
     </aside>
   </div> <!-- end sidebar -->
 </div> <!-- end row -->
-
-<br>

@@ -3,15 +3,11 @@
 	  <h1 class="main-name">New User</h1>
 	</header> <!-- end main-header -->
 
-	<br>
+	<section class="generic-container">
+		<%= render 'form', user: @user %>
+	</section>
 
-	<%= render 'form', user: @user %>
-
-	<hr>
-
-	<div class="center-content">
-	  <%= link_to 'Back', users_path %>
+	<div class="bottom-options">
+	  <%= link_to 'Back to Users\' List', users_path %>
 	</div>
 </div>
-
-<br>

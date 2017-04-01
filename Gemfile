@@ -59,4 +59,12 @@ group :production do
   gem 'pg'
 end
 
+# install Devise for authentication
 gem 'devise'
+
+# install CanCanCan for authorization
+gem 'cancancan', '~> 1.10'
+
+# install pagination
+gem 'will_paginate', '~> 3.1.0'
+

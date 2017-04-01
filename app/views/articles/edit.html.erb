@@ -2,13 +2,10 @@
   <h1 class="main-name">Edit Article</h1>
 </header> <!-- end main-header -->
 
-<section class="form-custom-margin form-text">
+<section class="generic-container form-text">
 	<%= render 'form', article: @article %>
-
-	<div class="edit-footer">
-		<div class="btn-group" role="group">
-	  	<%= link_to 'Show', @article %> | 
-	  	<%= link_to 'Back', root_path %>
-	  </div>
-	</div>
 </section>
+
+<div class="bottom-options">
+  <%= link_to 'Back to Article', @article %>
+</div>
